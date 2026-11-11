@@ -166,15 +166,71 @@ footer p,footer a{font-size:13px;color:#c1cee0}
 <div class="copyright">© 2026 TeraShip. Powered by TeraSyncTech. All rights reserved.</div>
 </footer>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
 <script>
-document.getElementById("trackingForm").addEventListener("submit", function(e){
- e.preventDefault();
- const awb = document.getElementById("awb").value.trim();
- const result = document.getElementById("trackResult");
- if(!awb) return;
- result.style.display = "block";
- result.textContent = "Tracking service is being connected. Please check back soon. Tracking number: " + awb;
+document.getElementById("trackingForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const awb = document.getElementById("awb").value.trim();
+  const result = document.getElementById("trackResult");
+  const button = this.querySelector("button");
+
+  if (!awb) return;
+
+  result.style.display = "block";
+  result.textContent = "Searching for your shipment...";
+  button.disabled = true;
+
+  try {
+    const { data, error } = await terashipDB.rpc(
+      "track_teraship_shipment",
+      { p_awb: awb }
+    );
+
+    if (error) throw error;
+
+    if (!data || !data.awb_number) {
+      result.textContent = "Shipment not found. Please check your AWB number.";
+      return;
+    }
+
+    const safe = value => String(value ?? "")
+      .replace(/[&<>"']/g, ch => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[ch]);
+
+    const history = Array.isArray(data.tracking_history)
+      ? data.tracking_history : [];
+
+    result.innerHTML = `
+      <h3>Shipment Found</h3>
+      <p><strong>AWB:</strong> ${safe(data.awb_number)}</p>
+      <p><strong>Status:</strong> ${safe(data.status)}</p>
+      <p><strong>Courier:</strong> ${safe(data.courier_name || "Not available")}</p>
+      <p><strong>Booking Date:</strong> ${safe(data.booking_date)}</p>
+      <hr>
+      <h4>Tracking History</h4>
+      ${history.length ? history.map(item => `
+        <div style="padding:10px 0;border-bottom:1px solid #ddd">
+          <strong>${safe(item.status)}</strong>
+          <p>Location: ${safe(item.location || "Not available")}</p>
+          <p>${safe(item.remarks || "")}</p>
+          <small>${safe(item.event_time || "")}</small>
+        </div>
+      `).join("") : "<p>No tracking updates available yet.</p>"}
+    `;
+  } catch (error) {
+    console.error("Tracking error:", error);
+    result.textContent = "Unable to retrieve tracking details. Please try again.";
+  } finally {
+    button.disabled = false;
+  }
 });
 </script>
-</body>
-</html>
+
