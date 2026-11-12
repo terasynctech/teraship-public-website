@@ -5,183 +5,496 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TeraShip | Smart Shipping & Logistics</title>
-<meta name="description" content="TeraShip - Smart multi-courier shipping, e-commerce logistics and shipment tracking across India.">
+<meta name="description" content="TeraShip by TeraSyncTech - Multi-courier shipping, shipment tracking and logistics solutions for businesses across India.">
+<meta name="theme-color" content="#102b52">
+
 <style>
-:root {
+:root{
   --navy:#102b52;
   --blue:#1769e8;
-  --light:#f3f7fd;
+  --blue2:#3988ff;
+  --light:#f4f7fc;
   --text:#172b49;
+  --muted:#718096;
+  --border:#e4eaf3;
+  --green:#159b68;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;color:var(--text);line-height:1.6}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,Arial,sans-serif;
+  color:var(--text);
+  line-height:1.6;
+  background:#fff;
+}
 a{text-decoration:none;color:inherit}
-header{background:white;position:sticky;top:0;z-index:10;box-shadow:0 2px 15px #102b5210}
-nav{max-width:1180px;margin:auto;padding:17px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-size:27px;font-weight:900;color:var(--navy);letter-spacing:-1px}
+button,input{font:inherit}
+.container{width:min(1180px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);
+  box-shadow:0 2px 18px #102b520c;
+}
+nav{
+  min-height:76px;
+  display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+}
+.logo{
+  font-size:29px;font-weight:900;
+  letter-spacing:-1.5px;color:var(--navy);
+}
 .logo span{color:var(--blue)}
-.navlinks{display:flex;gap:25px;align-items:center;font-size:14px;font-weight:600}
+.navlinks{
+  display:flex;align-items:center;gap:27px;
+  font-size:14px;font-weight:700;
+}
 .navlinks a:hover{color:var(--blue)}
-.btn{display:inline-block;background:var(--blue);color:white;padding:12px 21px;border-radius:7px;font-weight:700;border:0;cursor:pointer}
-.hero{background:linear-gradient(120deg,#0d2850,#1559b6);color:white;padding:85px 22px}
-.hero-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
-.hero h1{font-size:clamp(38px,5vw,60px);line-height:1.12;margin:15px 0}
-.hero p{font-size:17px;color:#dbe8ff;max-width:570px}
-.eyebrow{font-size:12px;letter-spacing:2px;font-weight:800;color:#a9ceff}
-.hero-card{background:white;color:var(--text);padding:27px;border-radius:16px;box-shadow:0 20px 55px #001c4a55}
-.hero-card h2{font-size:22px;margin-bottom:5px}
-.hero-card p{font-size:13px;color:#65758c;margin-bottom:18px}
-.track-input{width:100%;padding:15px;border:1px solid #d8e0eb;border-radius:7px;font-size:15px;margin:8px 0 12px}
-.track-result{display:none;margin-top:15px;padding:13px;background:#eef5ff;border-radius:7px;font-size:14px}
-section{padding:70px 22px}
-.container{max-width:1180px;margin:auto}
-.section-title{text-align:center;margin-bottom:38px}
-.section-title h2{font-size:34px;color:var(--navy)}
-.section-title p{color:#718096;margin-top:8px}
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.service{padding:27px;border:1px solid #e5ebf4;border-radius:13px;background:white}
-.service-icon{font-size:30px;margin-bottom:13px}
-.service h3{color:var(--navy);margin-bottom:8px}
-.service p{color:#718096;font-size:14px}
+.btn{
+  display:inline-flex;justify-content:center;align-items:center;
+  gap:8px;padding:13px 22px;border:0;border-radius:9px;
+  background:var(--blue);color:white;font-weight:800;
+  cursor:pointer;transition:.2s;
+}
+.btn:hover{background:#1056c5;transform:translateY(-1px)}
+.btn:disabled{opacity:.65;cursor:wait;transform:none}
+.btn-outline{
+  background:white;color:var(--navy);
+  border:1px solid var(--border);
+}
+.btn-outline:hover{background:#edf4ff;color:var(--blue)}
+.hero{
+  color:white;
+  background:
+    radial-gradient(circle at 85% 20%,#367eea55,transparent 32%),
+    linear-gradient(120deg,#0b2040,#123c79 65%,#1769e8);
+  padding:83px 0 92px;
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;
+  align-items:center;gap:55px;
+}
+.eyebrow{
+  color:#b9d5ff;font-size:12px;
+  font-weight:900;letter-spacing:2.5px;
+}
+.hero h1{
+  font-size:clamp(39px,5.4vw,65px);
+  line-height:1.08;letter-spacing:-2px;
+  margin:18px 0;
+}
+.hero-copy{
+  max-width:560px;color:#d9e7ff;font-size:17px;
+}
+.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}
+.hero .btn-outline{background:#ffffff14;color:white;border-color:#ffffff55}
+.trust-line{margin-top:27px;color:#c5d9f8;font-size:13px}
+.track-card{
+  background:white;color:var(--text);
+  border-radius:20px;padding:30px;
+  box-shadow:0 25px 70px #00153555;
+}
+.track-card h2{font-size:25px;color:var(--navy)}
+.track-card>p{font-size:14px;color:var(--muted);margin:5px 0 20px}
+.track-label{font-size:13px;font-weight:800;display:block;margin-bottom:7px}
+.track-input{
+  width:100%;height:54px;padding:0 15px;
+  border:1px solid #d9e1ed;border-radius:9px;
+  outline:none;font-size:15px;
+}
+.track-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e81c}
+.track-card form .btn{width:100%;margin-top:12px;height:51px}
+.track-help{font-size:12px;color:#8995a7;margin-top:12px}
+.track-result{
+  display:none;margin-top:22px;padding:20px;
+  border:1px solid var(--border);border-radius:13px;
+  background:#fbfdff;
+}
+.track-result h3{font-size:19px;color:var(--navy)}
+.result-top{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:10px;flex-wrap:wrap;
+  padding-bottom:15px;border-bottom:1px solid var(--border);
+}
+.status-pill{
+  display:inline-block;border-radius:30px;
+  padding:5px 11px;font-size:11px;font-weight:900;
+  text-transform:uppercase;background:#e9f2ff;color:#1769e8;
+}
+.status-pill.delivered{background:#e5f8ef;color:#128253}
+.result-meta{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:13px;padding:17px 0;
+}
+.meta-label{font-size:11px;color:var(--muted);display:block}
+.meta-value{font-size:13px;font-weight:800;overflow-wrap:anywhere}
+.timeline-title{font-size:15px;margin:9px 0 15px;color:var(--navy)}
+.timeline{position:relative;padding-left:25px}
+.timeline:before{
+  content:"";position:absolute;left:7px;top:8px;bottom:12px;
+  width:2px;background:#dce5f2;
+}
+.timeline-item{position:relative;padding:0 0 20px 9px}
+.timeline-dot{
+  position:absolute;left:-24px;top:5px;
+  width:14px;height:14px;border-radius:50%;
+  background:#c5d1e2;border:3px solid white;
+  box-shadow:0 0 0 1px #c5d1e2;
+}
+.timeline-item.latest .timeline-dot{
+  background:var(--blue);box-shadow:0 0 0 3px #d9e9ff;
+}
+.timeline-item strong{font-size:13px;display:block;text-transform:capitalize}
+.timeline-item p{font-size:12px;color:var(--muted);margin-top:3px}
+.timeline-item time{font-size:11px;color:#8995a7}
+.error-message{
+  color:#b42318;background:#fff0ef;
+  border-radius:8px;padding:12px;font-size:13px;
+}
+.loading-message{color:var(--blue);font-size:13px;padding:12px 0}
+section{padding:76px 0}
+.section-head{text-align:center;margin-bottom:38px}
+.section-head h2{font-size:clamp(27px,4vw,36px);color:var(--navy);letter-spacing:-.7px}
+.section-head p{color:var(--muted);margin-top:8px}
+.services{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.service{
+  border:1px solid var(--border);border-radius:15px;
+  padding:27px;background:white;transition:.2s;
+}
+.service:hover{transform:translateY(-4px);box-shadow:0 15px 35px #102b5210}
+.service-icon{
+  width:52px;height:52px;display:grid;place-items:center;
+  border-radius:13px;background:#edf4ff;font-size:25px;
+  margin-bottom:16px;
+}
+.service h3{color:var(--navy);font-size:18px;margin-bottom:7px}
+.service p{color:var(--muted);font-size:14px}
 .partners{background:var(--light)}
-.partner-list{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
-.partner{background:white;border:1px solid #e5ebf4;padding:15px 25px;border-radius:8px;font-weight:800;color:var(--navy)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;text-align:center}
-.step{padding:20px}
-.step-number{width:48px;height:48px;margin:0 auto 15px;border-radius:50%;background:#e6f0ff;color:var(--blue);display:grid;place-items:center;font-size:20px;font-weight:900}
-.cta{background:#eaf2ff;text-align:center}
-.cta h2{font-size:32px;color:var(--navy);margin-bottom:10px}
-.cta p{color:#61738b;margin-bottom:22px}
-footer{background:#0c2140;color:#dbe5f5;padding:40px 22px}
-.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
-footer h3{color:white;margin-bottom:10px}
-footer p,footer a{font-size:13px;color:#c1cee0}
-.copyright{text-align:center;border-top:1px solid #ffffff20;margin-top:25px;padding-top:20px;font-size:12px;color:#9fb0c8}
-@media(max-width:750px){
- .hero-inner{grid-template-columns:1fr}
- .navlinks{gap:12px;font-size:12px}
- .navlinks a:not(.btn){display:none}
- .services,.steps{grid-template-columns:1fr}
- .hero{padding:60px 20px}
- section{padding:55px 20px}
+.partner-list{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  gap:13px;
+}
+.partner{
+  display:grid;place-items:center;min-height:72px;
+  background:white;border:1px solid var(--border);
+  border-radius:10px;font-weight:800;color:var(--navy);
+  text-align:center;padding:12px;
+}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.step{text-align:center;padding:20px}
+.step-number{
+  width:52px;height:52px;margin:0 auto 15px;
+  display:grid;place-items:center;border-radius:50%;
+  background:#e7f0ff;color:var(--blue);
+  font-size:20px;font-weight:900;
+}
+.step h3{color:var(--navy);font-size:18px}
+.step p{color:var(--muted);font-size:14px;margin-top:7px}
+.cta{
+  background:linear-gradient(115deg,#eaf2ff,#f5f8ff);
+  text-align:center;
+}
+.cta h2{font-size:34px;color:var(--navy)}
+.cta p{color:var(--muted);margin:9px 0 23px}
+.cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+footer{background:#0b1f3c;color:#dbe5f5;padding:48px 0 20px}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:35px;
+}
+footer h3{color:white;margin-bottom:12px}
+footer p,footer a{font-size:13px;color:#bdcbe0}
+footer a:hover{color:white}
+.footer-links{display:grid;gap:8px}
+.copyright{
+  text-align:center;border-top:1px solid #ffffff20;
+  margin-top:32px;padding-top:18px;
+  font-size:12px;color:#9fb0c8;
+}
+@media(max-width:850px){
+  .hero-grid{grid-template-columns:1fr;gap:35px}
+  .partner-list{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:650px){
+  nav{min-height:68px}
+  .logo{font-size:25px}
+  .navlinks{gap:10px}
+  .navlinks a:not(.btn){display:none}
+  .navlinks .btn{padding:10px 13px;font-size:12px}
+  .hero{padding:58px 0}
+  .hero h1{letter-spacing:-1px}
+  .track-card{padding:21px}
+  section{padding:58px 0}
+  .services,.steps{grid-template-columns:1fr}
+  .partner-list{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr;gap:25px}
 }
 </style>
 </head>
+
 <body>
+
 <header>
-<nav>
- <a class="logo" href="#">Tera<span>Ship</span></a>
- <div class="navlinks">
-  <a href="#services">Services</a>
-  <a href="#partners">Couriers</a>
-  <a href="#how">How It Works</a>
-  <a class="btn" href="https://terasynctech.github.io/teraship-multicourier/seller-login.html">Seller Login</a>
- </div>
-</nav>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#">Tera<span>Ship</span></a>
+      <div class="navlinks">
+        <a href="#services">Services</a>
+        <a href="#partners">Couriers</a>
+        <a href="#how">How It Works</a>
+        <a class="btn" href="https://terasynctech.github.io/teraship-multicourier/seller-login.html">Seller Login</a>
+      </div>
+    </nav>
+  </div>
 </header>
 
+<main>
 <div class="hero">
-<div class="hero-inner">
- <div>
-  <div class="eyebrow">SMART SHIPPING. SIMPLIFIED.</div>
-  <h1>Every Shipment.<br>One Smart Platform.</h1>
-  <p>Manage your shipping with multiple courier partners from one platform. Simple, reliable and designed for growing businesses.</p>
-  <br>
-  <a href="#track" class="btn">Track Your Shipment</a>
- </div>
- <div class="hero-card" id="track">
-  <h2>Track Your Shipment</h2>
-  <p>Enter your AWB or tracking number to check your shipment status.</p>
-  <form id="trackingForm">
-   <input class="track-input" id="awb" type="text" placeholder="Enter AWB / Tracking Number" required>
-   <button class="btn" type="submit" style="width:100%">Track Shipment →</button>
-  </form>
-  <div class="track-result" id="trackResult"></div>
- </div>
-</div>
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">SMART SHIPPING. SIMPLIFIED.</div>
+      <h1>Every Shipment.<br>One Smart Platform.</h1>
+      <p class="hero-copy">
+        Simplify your shipping operations with TeraShip.
+        Explore multi-courier logistics, shipment management
+        and tracking through one connected platform.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="#track">Track a Shipment →</a>
+        <a class="btn btn-outline" href="https://terasynctech.github.io/teraship-multicourier/seller-register.html">Become a Seller</a>
+      </div>
+      <div class="trust-line">Built for sellers, growing businesses and logistics partners.</div>
+    </div>
+
+    <div class="track-card" id="track">
+      <h2>Track Your Shipment</h2>
+      <p>Get the latest available shipment status using your AWB number.</p>
+
+      <form id="trackingForm">
+        <label class="track-label" for="awb">AWB / Tracking Number</label>
+        <input class="track-input" id="awb" type="text"
+          placeholder="e.g. TS421311038165" autocomplete="off" required>
+        <button class="btn" type="submit">Track Shipment →</button>
+      </form>
+
+      <div class="track-help">Enter your tracking number exactly as provided when booking.</div>
+      <div class="track-result" id="trackResult" aria-live="polite"></div>
+    </div>
+  </div>
 </div>
 
 <section id="services">
-<div class="container">
- <div class="section-title">
-  <h2>Shipping Solutions for Every Business</h2>
-  <p>One platform for your complete shipping operations.</p>
- </div>
- <div class="services">
-  <div class="service"><div class="service-icon">📦</div><h3>Domestic Shipping</h3><p>Send parcels across India with a choice of courier partners.</p></div>
-  <div class="service"><div class="service-icon">🛒</div><h3>E-commerce Shipping</h3><p>Manage online store orders and deliveries from one place.</p></div>
-  <div class="service"><div class="service-icon">🏢</div><h3>B2B Logistics</h3><p>Shipping support for retailers, distributors and businesses.</p></div>
-  <div class="service"><div class="service-icon">💰</div><h3>COD Management</h3><p>Keep track of cash-on-delivery shipments and collections.</p></div>
-  <div class="service"><div class="service-icon">📊</div><h3>Shipping Dashboard</h3><p>Manage bookings, shipment status and business reports.</p></div>
-  <div class="service"><div class="service-icon">🤝</div><h3>Business Partnership</h3><p>Join the TeraShip network as a seller or franchise partner.</p></div>
- </div>
-</div>
+  <div class="container">
+    <div class="section-head">
+      <h2>Shipping Solutions for Every Business</h2>
+      <p>One platform designed to simplify your shipping workflow.</p>
+    </div>
+
+    <div class="services">
+      <article class="service">
+        <div class="service-icon">📦</div>
+        <h3>Domestic Shipping</h3>
+        <p>Manage parcel shipping across India with multiple courier options.</p>
+      </article>
+      <article class="service">
+        <div class="service-icon">🛍️</div>
+        <h3>E-commerce Shipping</h3>
+        <p>Organise online orders and delivery operations from one platform.</p>
+      </article>
+      <article class="service">
+        <div class="service-icon">🏢</div>
+        <h3>B2B Logistics</h3>
+        <p>Shipping support for retailers, distributors and business customers.</p>
+      </article>
+      <article class="service">
+        <div class="service-icon">💰</div>
+        <h3>COD Management</h3>
+        <p>Keep track of cash-on-delivery shipments and collection records.</p>
+      </article>
+      <article class="service">
+        <div class="service-icon">📊</div>
+        <h3>Business Dashboard</h3>
+        <p>Manage shipments, billing, customers and operational reports.</p>
+      </article>
+      <article class="service">
+        <div class="service-icon">🤝</div>
+        <h3>Business Partnership</h3>
+        <p>Join the TeraShip network as a seller or franchise partner.</p>
+      </article>
+    </div>
+  </div>
 </section>
 
 <section class="partners" id="partners">
-<div class="container">
- <div class="section-title">
-  <h2>Multiple Courier Partners</h2>
-  <p>Explore shipping options from leading courier networks.</p>
- </div>
- <div class="partner-list">
-  <div class="partner">Blue Dart</div>
-  <div class="partner">Delhivery</div>
-  <div class="partner">DTDC</div>
-  <div class="partner">India Post</div>
-  <div class="partner">Ecom Express</div>
-  <div class="partner">XpressBees</div>
- </div>
-</div>
+  <div class="container">
+    <div class="section-head">
+      <h2>Multiple Courier Partners</h2>
+      <p>Courier options listed on the TeraShip platform.</p>
+    </div>
+    <div class="partner-list">
+      <div class="partner">Blue Dart</div>
+      <div class="partner">Delhivery</div>
+      <div class="partner">DTDC</div>
+      <div class="partner">India Post</div>
+      <div class="partner">Ecom Express</div>
+      <div class="partner">XpressBees</div>
+    </div>
+  </div>
 </section>
 
 <section id="how">
-<div class="container">
- <div class="section-title">
-  <h2>Shipping Made Simple</h2>
-  <p>Three simple steps to manage your shipments.</p>
- </div>
- <div class="steps">
-  <div class="step"><div class="step-number">1</div><h3>Register Your Business</h3><p>Create your seller account and get approval.</p></div>
-  <div class="step"><div class="step-number">2</div><h3>Book Your Shipment</h3><p>Choose a courier service and enter shipment details.</p></div>
-  <div class="step"><div class="step-number">3</div><h3>Track Your Parcel</h3><p>Follow your shipment status using its tracking number.</p></div>
- </div>
-</div>
+  <div class="container">
+    <div class="section-head">
+      <h2>Shipping Made Simple</h2>
+      <p>A connected workflow for your shipping business.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Register Your Business</h3>
+        <p>Create your seller account and complete the approval process.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Manage Shipments</h3>
+        <p>Use the platform to organise your shipping operations.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Track Your Parcel</h3>
+        <p>Check the latest tracking updates available for your shipment.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="cta">
-<div class="container">
- <h2>Ready to Ship Smarter?</h2>
- <p>Join TeraShip and simplify your shipping operations.</p>
- <a class="btn" href="https://terasynctech.github.io/teraship-multicourier/seller-register.html">Register as a Seller</a>
-</div>
+  <div class="container">
+    <h2>Ready to Ship Smarter?</h2>
+    <p>Start your journey with TeraShip and simplify your shipping operations.</p>
+    <div class="cta-actions">
+      <a class="btn" href="https://terasynctech.github.io/teraship-multicourier/seller-register.html">Register as a Seller</a>
+      <a class="btn btn-outline" href="https://terasynctech.github.io/teraship-multicourier/seller-login.html">Seller Login</a>
+    </div>
+  </div>
 </section>
+</main>
 
 <footer>
-<div class="footer-inner">
- <div><h3>TeraShip</h3><p>Smart Shipping & Logistics Platform</p><p>Powered by TeraSyncTech</p></div>
- <div><h3>Quick Links</h3><p><a href="#services">Services</a></p><p><a href="#track">Track Shipment</a></p><p><a href="https://terasynctech.github.io/teraship-multicourier/seller-login.html">Seller Login</a></p></div>
- <div><h3>Business Enquiries</h3><p>Email: g.hamid@terasynctech.com</p><p>India</p></div>
-</div>
-<div class="copyright">© 2026 TeraShip. Powered by TeraSyncTech. All rights reserved.</div>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3 class="logo" style="color:white">Tera<span>Ship</span></h3>
+        <p>Smart Shipping & Logistics Platform</p>
+        <p>Powered by TeraSyncTech</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#partners">Courier Partners</a>
+          <a href="#track">Track Shipment</a>
+          <a href="https://terasynctech.github.io/teraship-multicourier/seller-register.html">Seller Registration</a>
+        </div>
+      </div>
+      <div>
+        <h3>Business Enquiries</h3>
+        <p>Email: g.hamid@terasynctech.com</p>
+        <p>India</p>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 TeraShip. Powered by TeraSyncTech. All rights reserved.
+    </div>
+  </div>
 </footer>
-
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-config.js"></script>
+
 <script>
-document.getElementById("trackingForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
+const form = document.getElementById("trackingForm");
+const result = document.getElementById("trackResult");
+
+const safe = value => String(value ?? "").replace(/[&<>"']/g, ch => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+})[ch]);
+
+function formatDate(value) {
+  if (!value) return "Date not available";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return safe(value);
+  return new Intl.DateTimeFormat("en-IN", {
+    dateStyle:"medium", timeStyle:"short", timeZone:"Asia/Kolkata"
+  }).format(date);
+}
+
+function niceStatus(value) {
+  return String(value || "pending")
+    .replace(/_/g," ")
+    .replace(/\b\w/g, letter => letter.toUpperCase());
+}
+
+function renderTracking(data) {
+  const history = Array.isArray(data.tracking_history)
+    ? [...data.tracking_history] : [];
+
+  history.sort((a,b) => new Date(a.event_time || 0) - new Date(b.event_time || 0));
+
+  const currentStatus = String(data.status || "").toLowerCase();
+  const delivered = currentStatus === "delivered";
+  const statusClass = delivered ? "status-pill delivered" : "status-pill";
+
+  const historyHtml = history.length
+    ? history.map((item,index) => `
+      <div class="timeline-item ${index === history.length-1 ? "latest" : ""}">
+        <span class="timeline-dot"></span>
+        <strong>${safe(niceStatus(item.status))}</strong>
+        <p>${safe(item.remarks || "Shipment status updated")}</p>
+        <p>Location: ${safe(item.location || "Not available")}</p>
+        <time>${safe(formatDate(item.event_time))}</time>
+      </div>
+    `).join("")
+    : `<p style="font-size:13px;color:#718096">No tracking events have been added yet.</p>`;
+
+  result.innerHTML = `
+    <div class="result-top">
+      <div>
+        <span class="meta-label">SHIPMENT FOUND</span>
+        <h3>${safe(data.awb_number)}</h3>
+      </div>
+      <span class="${statusClass}">${safe(niceStatus(data.status))}</span>
+    </div>
+    <div class="result-meta">
+      <div>
+        <span class="meta-label">Courier Partner</span>
+        <span class="meta-value">${safe(data.courier_name || "Not available")}</span>
+      </div>
+      <div>
+        <span class="meta-label">Booking Date</span>
+        <span class="meta-value">${safe(data.booking_date || "Not available")}</span>
+      </div>
+    </div>
+    <h4 class="timeline-title">Shipment Tracking History</h4>
+    <div class="timeline">${historyHtml}</div>
+  `;
+}
+
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
 
   const awb = document.getElementById("awb").value.trim();
-  const result = document.getElementById("trackResult");
-  const button = this.querySelector("button");
+  const button = form.querySelector("button");
 
   if (!awb) return;
 
   result.style.display = "block";
-  result.textContent = "Searching for your shipment...";
+  result.innerHTML = '<div class="loading-message">Searching for your shipment...</div>';
   button.disabled = true;
+  button.textContent = "Searching...";
 
   try {
     const { data, error } = await terashipDB.rpc(
@@ -192,47 +505,21 @@ document.getElementById("trackingForm").addEventListener("submit", async functio
     if (error) throw error;
 
     if (!data || !data.awb_number) {
-      result.textContent = "Shipment not found. Please check your AWB number.";
+      result.innerHTML = '<div class="error-message">Shipment not found. Please check your AWB number and try again.</div>';
       return;
     }
 
-    const safe = value => String(value ?? "")
-      .replace(/[&<>"']/g, ch => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      })[ch]);
+    renderTracking(data);
 
-    const history = Array.isArray(data.tracking_history)
-      ? data.tracking_history : [];
-
-    result.innerHTML = `
-      <h3>Shipment Found</h3>
-      <p><strong>AWB:</strong> ${safe(data.awb_number)}</p>
-      <p><strong>Status:</strong> ${safe(data.status)}</p>
-      <p><strong>Courier:</strong> ${safe(data.courier_name || "Not available")}</p>
-      <p><strong>Booking Date:</strong> ${safe(data.booking_date)}</p>
-      <hr>
-      <h4>Tracking History</h4>
-      ${history.length ? history.map(item => `
-        <div style="padding:10px 0;border-bottom:1px solid #ddd">
-          <strong>${safe(item.status)}</strong>
-          <p>Location: ${safe(item.location || "Not available")}</p>
-          <p>${safe(item.remarks || "")}</p>
-          <small>${safe(item.event_time || "")}</small>
-        </div>
-      `).join("") : "<p>No tracking updates available yet.</p>"}
-    `;
   } catch (error) {
-    console.error("Tracking error:", error);
-    result.textContent = "Unable to retrieve tracking details. Please try again.";
+    console.error("TeraShip tracking error:", error);
+    result.innerHTML = '<div class="error-message">We could not retrieve tracking details right now. Please try again later.</div>';
   } finally {
     button.disabled = false;
+    button.textContent = "Track Shipment →";
   }
 });
 </script>
 
-  
-
+</body>
+</html>
